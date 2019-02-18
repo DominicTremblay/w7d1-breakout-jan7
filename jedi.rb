@@ -1,4 +1,5 @@
-class Jedi 
+class Jedi
+
 
   attr_reader :name, :ap
   attr_accessor :hp
@@ -9,23 +10,29 @@ class Jedi
     @hp = 20
   end
 
-  def status
-    "Jedi: #{@name} HP: #{self.dead? ? 'Dead' : @hp}"
-  end
+  # tradional setter
+  # def hp=(hp)
+  #   @hp = hp
+  # end
 
-  def take_damage(amount)
-    puts "- #{@name} is taking #{amount} points of damage!"
-    @hp -= amount
+  def status
+    "Jedi: #{@name} HP: #{self.dead? ? "is a force ghost!" : @hp}"
   end
 
   def attack(ennemy_jedi)
-    puts "- #{@name} is attacking #{ennemy_jedi.name}"
+    puts "#{@name} attacks #{ennemy_jedi.name}"
     damage = rand(@ap) + 1
     ennemy_jedi.take_damage(damage)
   end
 
   def dead?
-    @hp <= 0
+    @hp <= -10
   end
+
+  def take_damage(damage_amount)
+    puts "#{@name} has taken #{damage_amount} points of damage!"
+    @hp -= damage_amount
+  end
+
 
 end
