@@ -20,7 +20,7 @@ class Turn
   end
 
   def get_ennemy_player(current)
-    @ennemy_player = living_players.select { |jedi| jedi != current }.first
+    @ennemy_player = living_players.select { |player| player != current }.first
   end
 
   def next_turn
